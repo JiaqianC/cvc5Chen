@@ -13,12 +13,11 @@ public class RunCvc5 {
     public static void main(String[] args) {
         
         String problem = 
-                "(define f::(-> int int))\n" +
-                "(define i::int)\n" +
-                "(define j::int)\n" +
-                "(assert (= (- i 1) (+ j 2)))" +
-                "(assert (/= (f (+ i 3)) (f (+ j 6))))" +
-                "(check)";
+                "(set-logic QF_LIA)\n"+
+                "(declare-fun x () Int)\n"+
+                "(assert (<= x 0))\n"+
+                "(assert (not (= (- x) (abs x))))\n"+
+                "(check-sat)\n";
                 //"(exit)\n";
         
         //System.out.println(problem);
